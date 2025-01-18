@@ -18,7 +18,7 @@ Deployed alongside compute workloads, IOMesh reduces infrastructure space usage 
 ```
 
 
-### Complements :
+🎯 Focus :
 ```
 📃 Stateful Application
 📃 Block Storage
@@ -39,10 +39,34 @@ Deployed alongside compute workloads, IOMesh reduces infrastructure space usage 
 # Elastic
 ```
 
-### Config
-
+🧩 Config 
 ```
-terraform plan -out tfplan.out
-terraform apply tfplan.out
+iomesh:
+    chunk:
+      dataCIDR: ""
+diskDeploymentMode: "hybridFlash"
+platform: ""
+edition: "" # If left blank, Community Edition will be installed.
+iomesh:
+  chunk:
+    replicaCount: 3 # Enter the number of chunk pods.
+iomesh:
+  chunk:
+    podPolicy:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/hostname 
+                operator: In
+                values:
+                - iomesh-worker-0 # Specify the values of the node label.
+                - iomesh-worker-1
+csi-driver:
+  driver:
+    controller:
+      driver:
+        podDeletePolicy: "no-delete-pod" # Supports "no-delete-pod", "delete-deployment-pod", "delete-statefulset-pod", or "delete-both-statefulset-and-deployment-pod"
 ```
 
