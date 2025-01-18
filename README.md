@@ -21,10 +21,10 @@ Deployed alongside compute workloads, IOMesh reduces infrastructure space usage 
 ### Complements :
 ```
 📃 Stateful Application
-📃 IOMesh Block Storage
+📃 Block Storage
 📃 Chunk
-📃 IOMesh CSI Driver
-📃 IOMesh Operator
+📃 CSI Driver
+📃 Operator
 ```
 
 
