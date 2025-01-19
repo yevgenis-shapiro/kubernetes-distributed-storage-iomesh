@@ -30,19 +30,16 @@ Deployed alongside compute workloads, IOMesh reduces infrastructure space usage 
 
 🧩 Config 
 ```
-iomesh:
-    chunk:
-      dataCIDR: ""
-diskDeploymentMode: "hybridFlash"
-platform: ""
-edition: "" # If left blank, Community Edition will be installed.
-iomesh:
-  chunk:
-    replicaCount: 3 # Enter the number of chunk pods.
-csi-driver:
-  driver:
-    controller:
-      driver:
-        podDeletePolicy: "no-delete-pod" # Supports "no-delete-pod", "delete-deployment-pod", "delete-statefulset-pod".
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: iomesh-mysql-sc
+provisioner: com.iomesh.csi-driver # The driver name in `iomesh.yaml`.
+reclaimPolicy: Retain
+allowVolumeExpansion: true
+parameters:
+  csi.storage.k8s.io/fstype: "ext4"
+  replicaFactor: "2"
+  thinProvision: "true"
 ```
 
