@@ -28,17 +28,6 @@ Deployed alongside compute workloads, IOMesh reduces infrastructure space usage 
 ```
 
 
-🔨 Integration :
-```
-# MySQL
-# MariaDB
-# PostgresSQL
-# Cassandra
-# Kafka
-# Mongo
-# Elastic
-```
-
 🧩 Config 
 ```
 iomesh:
